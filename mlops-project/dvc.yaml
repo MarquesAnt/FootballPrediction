@@ -1,0 +1,33 @@
+stages:
+  ingest:
+    cmd: python -m src.data.ingest --out data/raw
+    deps:
+      - src/data/ingest.py
+    outs:
+      - data/raw
+  features:
+    cmd: python -m src.data.make_features --in data/raw --out data/processed
+    deps:
+      - src/data/make_features.py
+      - data/raw
+    outs:
+      - data/processed
+  train:
+    cmd: python -m src.models.train --in data/processed --model models/model.pkl --report reports/metrics.json
+    deps:
+      - src/models/train.py
+      - data/processed
+    outs:
+      - models/model.pkl
+      - reports/metrics.json
+    params:
+      - model
+      - training
+  evaluate:
+    cmd: python -m src.models.predict --in data/processed --model models/model.pkl --out reports/eval_preds.parquet
+    deps:
+      - src/models/predict.py
+      - models/model.pkl
+      - data/processed
+    outs:
+      - reports/eval_preds.parquet
