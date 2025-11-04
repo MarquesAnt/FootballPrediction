@@ -1,0 +1,54 @@
+# ----------------------
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# ----------------------
+# Virtual env
+.venv/
+.env/
+env/
+venv/
+
+# ----------------------
+# Data & artifacts (handled by DVC)
+data/
+models/
+reports/
+storage/
+*.dvc
+*.lock
+*.pkl
+*.parquet
+*.csv
+*.xlsx
+*.zip
+
+# ----------------------
+# Jupyter / notebooks
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+*.ipynb_save
+
+# ----------------------
+# Logs & misc
+*.log
+*.tmp
+logs/
+__results__/
+
+# ----------------------
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Python packaging
+dist/
+build/
+*.egg-info/
